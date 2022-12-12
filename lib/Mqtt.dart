@@ -1,3 +1,4 @@
+import 'package:alarmsystem/service/local_notification_service.dart';
 import 'package:mqtt_client/mqtt_client.dart';
 import 'package:mqtt_client/mqtt_server_client.dart';
 
@@ -6,7 +7,8 @@ class MQTTConnection {
   final String serverIp;
   final int connectionPort;
   final String topic;
-
+  final LocalNotificationService _notificationService =
+      LocalNotificationService();
   // ! Setting Flase in Production
   bool kDebugMode = true;
 
@@ -30,7 +32,7 @@ class MQTTConnection {
       final MqttPublishMessage message = c[0].payload as MqttPublishMessage;
       final payload =
           MqttPublishPayload.bytesToStringAsString(message.payload.message);
-
+      _notificationService.showNotification(0, 'Password Warning', payload);
       if (kDebugMode) {
         print('Received message:$payload from topic: ${c[0].topic}>');
       }
