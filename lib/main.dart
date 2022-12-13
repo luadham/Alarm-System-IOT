@@ -37,7 +37,7 @@ void main() {
 class MyApp extends StatelessWidget {
   MQTTConnection connection = MQTTConnection('44.204.177.187', 2001, '\\test');
 
-  static const String title = 'Light & Dark Theme';
+  static const String title = 'Alarm system';
 
   @override
   Widget build(BuildContext context) => ChangeNotifierProvider(

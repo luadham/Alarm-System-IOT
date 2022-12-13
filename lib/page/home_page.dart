@@ -4,8 +4,6 @@ import 'package:alarmsystem/main.dart';
 import 'package:alarmsystem/provider/theme_provider.dart';
 import 'package:alarmsystem/widget/change_theme_button_widget.dart';
 
-import 'navigationbar_widget.dart';
-
 class HomePage extends StatelessWidget {
 /*   @override
    Widget build(BuildContext context) => Scaffold(
@@ -32,21 +30,38 @@ class HomePage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.orange,
-        title: Text(MyApp.title),
+        backgroundColor: Colors.lightBlue[400],
+        title: const Text(MyApp.title,
+            style: TextStyle(
+            fontSize: 20,
+            fontFamily: 'dogicapixel'
+        )),
         actions: [
+        const IconButton(
+        icon: Icon(Icons.lightbulb_outline_sharp)),
           ChangeThemeButtonWidget(),
         ],
       ),
-      body: Center(
-        child: Text(
-          'Hello $text!',
-          style: TextStyle(
-            fontSize: 32,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-      ),
+      body: GridView.count(
+        crossAxisCount: 2,
+        crossAxisSpacing: 4.0,
+        mainAxisSpacing: 8.0,
+          children: List.generate(1, (index) {
+            return Center(
+              child: RichText(
+                text: TextSpan(
+                  children: <TextSpan>[
+                    TextSpan(text: 'Numpad Device\n\n\n',
+                    style: Theme.of(context).textTheme.bodyText1),
+                    TextSpan(text: ' Current password is\n\n\t\t\t\t\t 12345',
+                    style: Theme.of(context).textTheme.bodyText1),
+            ],
+            ),
+              )
+            );
+          }
+          )
+        )
     );
   }
 }
