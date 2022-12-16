@@ -1,5 +1,7 @@
 import 'package:alarmsystem/Mqtt.dart';
 import 'package:alarmsystem/assets/UIStrings.dart';
+import 'package:alarmsystem/splash.dart';
+import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
@@ -50,7 +52,8 @@ class MyApp extends StatelessWidget {
         themeMode: themeProvider.themeMode,
         theme: MyThemes.lightTheme,
         darkTheme: MyThemes.darkTheme,
-        home: HomePage(),
+        home: SplashScreen()
+        //AnimatedSplashScreen(splash: SplashScreen(),splashTransition: SplashTransition.fade, nextScreen: HomePage(),),
       );
     },
   );

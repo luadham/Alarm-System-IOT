@@ -53,8 +53,8 @@ class HomePage extends StatelessWidget {
                   children: <TextSpan>[
                     TextSpan(text: 'Numpad Device\n\n\n',
                     style: Theme.of(context).textTheme.bodyText1),
-                    TextSpan(text: ' Current password is\n\n\t\t\t\t\t 12345',
-                    style: Theme.of(context).textTheme.bodyText1),
+                    TextSpan(text: ' Current password:\n\n\t\t\t\t\t 12345',
+                    style: Theme.of(context).textTheme.bodyText2),
             ],
             ),
               )
