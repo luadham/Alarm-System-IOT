@@ -53,6 +53,8 @@ class MyApp extends StatelessWidget {
         theme: MyThemes.lightTheme,
         darkTheme: MyThemes.darkTheme,
         home: SplashScreen()
+        //Adding animation to splash screen produces a 'A RenderFlex overflowed…' error. 
+        //uncomment next line to fix it.
         //AnimatedSplashScreen(splash: SplashScreen(),splashTransition: SplashTransition.fade, nextScreen: HomePage(),),
       );
     },
