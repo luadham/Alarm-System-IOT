@@ -1,3 +1,4 @@
+import 'package:alarmsystem/assets/UIStrings.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:alarmsystem/main.dart';
@@ -29,39 +30,31 @@ class HomePage extends StatelessWidget {
         : 'LightTheme';
 
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.lightBlue[400],
-        title: const Text(MyApp.title,
-            style: TextStyle(
-            fontSize: 20,
-            fontFamily: 'dogicapixel'
-        )),
-        actions: [
-        const IconButton(
-        icon: Icon(Icons.lightbulb_outline_sharp)),
-          ChangeThemeButtonWidget(),
-        ],
-      ),
-      body: GridView.count(
-        crossAxisCount: 2,
-        crossAxisSpacing: 4.0,
-        mainAxisSpacing: 8.0,
-          children: List.generate(1, (index) {
-            return Center(
-              child: RichText(
-                text: TextSpan(
-                  children: <TextSpan>[
-                    TextSpan(text: 'Numpad Device\n\n\n',
-                    style: Theme.of(context).textTheme.bodyText1),
-                    TextSpan(text: ' Current password:\n\n\t\t\t\t\t 12345',
-                    style: Theme.of(context).textTheme.bodyText2),
-            ],
-            ),
+        appBar: AppBar(
+          backgroundColor: Colors.lightBlue[400],
+          title: const Text(MyApp.title,
+              style: TextStyle(fontSize: 20, fontFamily: 'dogicapixel')),
+          actions: [
+            const IconButton(icon: Icon(Icons.lightbulb_outline_sharp)),
+            ChangeThemeButtonWidget(),
+          ],
+        ),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(UIStrings.projectName,
+                  style: Theme.of(context).textTheme.bodyText1),
+              const SizedBox(
+                // ! if you want to add space in flutter use Sized Box :)
+                height: 20,
+              ),
+              Text(
+                'Password: 123456',
+                style: Theme.of(context).textTheme.bodyText1,
               )
-            );
-          }
-          )
-        )
-    );
+            ],
+          ),
+        ));
   }
 }

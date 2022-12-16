@@ -9,7 +9,6 @@ import 'package:alarmsystem/provider/theme_provider.dart';
 import 'package:alarmsystem/widget/change_theme_button_widget.dart';
 import 'package:alarmsystem/page/home_page.dart';
 
-
 void main() {
   runApp(MyApp());
 }
@@ -43,20 +42,26 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => ChangeNotifierProvider(
-    create: (context) => ThemeProvider(),
-    builder: (context, _) {
-      final themeProvider = Provider.of<ThemeProvider>(context);
+        create: (context) => ThemeProvider(),
+        builder: (context, _) {
+          final themeProvider = Provider.of<ThemeProvider>(context);
 
-      return MaterialApp(
-        title: title,
-        themeMode: themeProvider.themeMode,
-        theme: MyThemes.lightTheme,
-        darkTheme: MyThemes.darkTheme,
-        home: SplashScreen()
-        //Adding animation to splash screen produces a 'A RenderFlex overflowed…' error. 
-        //uncomment next line to fix it.
-        //AnimatedSplashScreen(splash: SplashScreen(),splashTransition: SplashTransition.fade, nextScreen: HomePage(),),
+          return MaterialApp(
+              title: title,
+              themeMode: themeProvider.themeMode,
+              theme: MyThemes.lightTheme,
+              darkTheme: MyThemes.darkTheme,
+              home: AnimatedSplashScreen(
+                duration: 3000,
+                splash: Icons.home,
+                nextScreen: HomePage(),
+                splashTransition: SplashTransition.fadeTransition,
+              )
+              // ! Animation Fixed Try To Modify Splash screen :)
+              //Adding animation to splash screen produces a 'A RenderFlex overflowed…' error.
+              //uncomment next line to fix it.
+              // AnimatedSplashScreen(splash: SplashScreen(),splashTransition: SplashTransition.fade, nextScreen: HomePage(),),
+              );
+        },
       );
-    },
-  );
 }
