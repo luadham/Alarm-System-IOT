@@ -23,11 +23,10 @@ class _MyAppState extends State<MyApp> {
   final LocalNotificationService _localNotificationService =
       LocalNotificationService();
 
-  MQTTConnection connection = MQTTConnection('3.91.80.254', 2001, '\\test');
+  MQTTConnection connection = MQTTConnection('54.234.217.122', 2001, '\\test');
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _localNotificationService.initialize();
     connection.connect();
