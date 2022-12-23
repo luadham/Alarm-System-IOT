@@ -1,11 +1,12 @@
 import 'package:alarmsystem/assets/UIStrings.dart';
+import 'package:alarmsystem/service/local_notification_service.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:alarmsystem/main.dart';
 import 'package:alarmsystem/provider/theme_provider.dart';
 import 'package:alarmsystem/widget/change_theme_button_widget.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
 /*   @override
    Widget build(BuildContext context) => Scaffold(
          appBar: AppBar(
@@ -39,7 +40,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.lightBlue[400],
-          title: const Text(MyApp.title,
+          title: Text(UIStrings.projectName,
               style: TextStyle(fontSize: 20, fontFamily: 'dogicapixel')),
           actions: [
             const IconButton(icon: Icon(Icons.lightbulb_outline_sharp)),

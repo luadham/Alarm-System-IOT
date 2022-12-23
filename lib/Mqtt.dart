@@ -14,6 +14,12 @@ class MQTTConnection {
 
   MQTTConnection(this.serverIp, this.connectionPort, this.topic);
 
+  var messages = {
+    "1": 'Device Is Connected',
+    "2": 'Someone enter Wrong Password',
+    "3": 'Someone Enter Correct Password'
+  };
+
   // Connect to Broker
   Future<MqttServerClient> connect() async {
     MqttServerClient client =
@@ -32,7 +38,7 @@ class MQTTConnection {
       final MqttPublishMessage message = c[0].payload as MqttPublishMessage;
       final payload =
           MqttPublishPayload.bytesToStringAsString(message.payload.message);
-      _notificationService.showNotification(0, 'Password Warning', payload);
+      _notificationService.showNotification(0, 'Device Say', messages[payload]);
       if (kDebugMode) {
         print('Received message:$payload from topic: ${c[0].topic}>');
       }
