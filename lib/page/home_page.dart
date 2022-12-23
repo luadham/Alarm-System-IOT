@@ -1,15 +1,27 @@
 import 'package:alarmsystem/assets/UIStrings.dart';
-import 'package:alarmsystem/service/local_notification_service.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:alarmsystem/main.dart';
 import 'package:alarmsystem/provider/theme_provider.dart';
 import 'package:alarmsystem/widget/change_theme_button_widget.dart';
 
-// import 'navigationbar_widget.dart';
-
-class HomePage extends StatefulWidget {
-  const HomePage({Key key}) : super(key: key);
+class HomePage extends StatelessWidget {
+/*   @override
+   Widget build(BuildContext context) => Scaffold(
+         appBar: AppBar(
+           iconTheme: Theme.of(context).iconTheme,
+           backgroundColor: Colors.transparent,
+           leading: Icon(Icons.menu),
+           title: Text(MyApp.title),
+           elevation: 0,
+           actions: [
+             ChangeThemeButtonWidget(),
+           ],
+         ),
+         body: ProfileWidget(),
+         extendBody: true,
+         bottomNavigationBar: NavigationBarWidget(),
+       );*/
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -25,33 +37,31 @@ class _HomePageState extends State<HomePage> {
         ? 'DarkTheme'
         : 'LightTheme';
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.orange,
-        title: const Text(UIStrings.title),
-        actions: [
-          ChangeThemeButtonWidget(),
-        ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        child: const Text('Test'),
-        onPressed: () {
-          localNotificationService.showNotification(0, "Tets", "Warn");
-        },
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              'Hello $text!',
-              style: const TextStyle(
-                fontSize: 32,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
+        appBar: AppBar(
+          backgroundColor: Colors.lightBlue[400],
+          title: const Text(MyApp.title,
+              style: TextStyle(fontSize: 20, fontFamily: 'dogicapixel')),
+          actions: [
+            const IconButton(icon: Icon(Icons.lightbulb_outline_sharp)),
+            ChangeThemeButtonWidget(),
           ],
         ),
-      ),
-    );
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(UIStrings.projectName,
+                  style: Theme.of(context).textTheme.bodyText1),
+              const SizedBox(
+                // ! if you want to add space in flutter use Sized Box :)
+                height: 20,
+              ),
+              Text(
+                'Password: 123456',
+                style: Theme.of(context).textTheme.bodyText1,
+              )
+            ],
+          ),
+        ));
   }
 }
